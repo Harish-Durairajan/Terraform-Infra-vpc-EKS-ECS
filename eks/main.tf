@@ -19,6 +19,7 @@
 #     command = "aws eks update-kubeconfig --region us-east-1 --name demo_eks_cluster"
 #   }
 # }
+# The above module is working perfectly
 
 module "istio" {
   source  = "truemark/istio/kubernetes"
