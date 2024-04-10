@@ -1,5 +1,5 @@
 
-# Module for istio in kubernetes
+# Module for istio in kubernetes using helm
 # module "istio" {
 #   source  = "truemark/istio/kubernetes"
 #   version = "0.0.5"
