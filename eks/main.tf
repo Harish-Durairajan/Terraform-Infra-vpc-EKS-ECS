@@ -8,17 +8,17 @@
 #   # depends_on = [ "aws eks update-kubeconfig --region us-east-1 --name demo_eks_cluster" ]
 # }
 
-resource "null_resource" "update_kubeconfig" {
-  # This null resource will run the aws eks update-kubeconfig command
-  # before applying the Istio module.
-  triggers = {
-    always_run = "${timestamp()}"
-  }
+# resource "null_resource" "update_kubeconfig" {
+#   # This null resource will run the aws eks update-kubeconfig command
+#   # before applying the Istio module.
+#   triggers = {
+#     always_run = "${timestamp()}"
+#   }
 
-  provisioner "local-exec" {
-    command = "aws eks update-kubeconfig --region us-east-1 --name demo_eks_cluster"
-  }
-}
+#   provisioner "local-exec" {
+#     command = "aws eks update-kubeconfig --region us-east-1 --name demo_eks_cluster"
+#   }
+# }
 
 module "istio" {
   source  = "truemark/istio/kubernetes"
@@ -27,7 +27,7 @@ module "istio" {
   vpc_id = "Module.Network.vpc_id"
 
   # Define an implicit dependency on the null_resource "update_kubeconfig"
-  depends_on = [null_resource.update_kubeconfig]
+  # depends_on = [null_resource.update_kubeconfig]
 }
 
 
